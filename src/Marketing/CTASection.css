@@ -1,0 +1,124 @@
+.cta-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 130px 8%;
+  background: #f3f8ff;
+  gap: 60px;
+}
+
+/* LEFT */
+.cta-left {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.cta-bg {
+  position: relative;
+  width: 320px;
+  height: 320px;
+  background: #cfe6fb;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+}
+
+/* Dashboard */
+.dashboard-img {
+  position: absolute;
+  bottom: 19px;  
+  width: 100%;
+  height: 400px;
+  z-index: 1;
+}
+
+/* Woman overlapping */
+.woman-img {
+  position: absolute;
+  left: -40px;
+  bottom: 0;
+  width: 75%;
+  height: 90%;
+  z-index: 1;
+}
+
+/* RIGHT */
+.cta-right {
+  flex: 1;
+}
+
+.cta-right h2 {
+  font-size: 40px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 16px;
+}
+
+.cta-right h2 span {
+  display: block;
+  margin-top: 6px;
+}
+
+.cta-right p {
+  font-size: 18px;
+  color: #475569;
+  margin-bottom: 32px;
+}
+
+/* Buttons */
+.cta-buttons {
+  display: flex;
+  gap: 18px;
+}
+
+.btn-primary {
+  background: #0b63f6;
+  color: white;
+  border: none;
+  padding: 14px 32px;
+  font-size: 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-outline {
+  background: transparent;
+  color: #0b63f6;
+  border: 2px solid #0b63f6;
+  padding: 14px 32px;
+  font-size: 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+  .cta-section {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .cta-buttons {
+    justify-content: center;
+  }
+
+  .woman-img {
+    left: -20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cta-bg {
+    width: 300px;
+    height: 300px;
+  }
+
+  .cta-right h2 {
+    font-size: 30px;
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "short_name": "Consultdesk360",
+  "name": "Consultdesk360 – Office Management Software",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0065e2",
+  "icons": [
+    {
+      "src": "/RVlogo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/RVlogo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
+

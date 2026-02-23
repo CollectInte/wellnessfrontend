@@ -1,0 +1,432 @@
+/* Base Styles */
+.schedule-container {
+  display: flex;
+  height: 80vh;
+  background: #f5f7fa;
+  overflow: hidden;
+}
+
+/* Doctors Sidebar */
+.doctors-sidebar {
+  width: 300px;
+  background: #ffffff;
+  border-right: 1px solid #e5e7eb;
+  overflow-y: auto;
+  flex-shrink: 0;
+}
+
+.sidebar-title {
+  padding: 24px 20px;
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #1f2937;
+  border-bottom: 1px solid #e5e7eb;
+  background: #ffffff;
+  sticky: top;
+  z-index: 10;
+}
+
+.doctors-list {
+  padding: 16px;
+}
+
+.no-doctors {
+  padding: 40px 20px;
+  text-align: center;
+  color: #6b7280;
+}
+
+.doctor-card {
+  display: flex;
+  gap: 12px;
+  padding: 12px;
+  margin-bottom: 12px;
+  background-color: #e9f1f1;
+  border: 2px solid #01636B;
+  border-radius: 12px;
+  color: #ffffff !important;
+
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* FORCE TEXT COLOR */
+.doctor-card,
+.doctor-card * {
+  color: #437986 !important;
+}
+
+.doctor-card.selected {
+  background-color: #01636B;
+}
+
+/* force white text when selected */
+.doctor-card.selected,
+.doctor-card.selected * {
+  color: #ffffff !important;
+}
+
+.doctor-card:hover {
+  background: #516966;
+  transform: translateX(4px);
+}
+
+/* FORCE WHITE TEXT ON HOVER */
+.doctor-card:hover,
+.doctor-card:hover * {
+  color: #ffffff !important;
+}
+
+/* FORCE ICON COLOR */
+.doctor-card:hover svg {
+  color: #ffffff !important;
+}
+
+
+.doctor-card.selected {
+  background: #01636B;
+  color: white !important
+}
+
+.doctor-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: #e5e7eb;
+}
+
+.doctor-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.avatar-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.doctor-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.doctor-name {
+  margin: 0 0 4px 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+}
+
+.doctor-specialization {
+  margin: 0 0 8px 0;
+  font-size: 13px;
+  color: white;
+}
+
+.availability-indicator {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+
+.indicator-dot {
+  width: 8px;
+  height: 8px;
+  background: #10b981;
+  border-radius: 50%;
+}
+
+.indicator-text {
+  font-size: 12px;
+  color: #10b981;
+  font-weight: 500;
+}
+
+.availability-time {
+  font-size: 12px;
+  color: #6b7280;
+  margin: 0;
+}
+
+/* Schedule Main Area */
+.schedule-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Filters */
+.schedule-filters {
+  display: flex;
+  gap: 16px;
+  padding: 20px;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  flex-wrap: wrap;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 140px;
+}
+
+.filter-group label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #6b7280;
+}
+
+.filter-group select {
+  padding: 6px 10px;
+  /* reduced padding */
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 14px;
+  color: white;
+  background-color: #01636B;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.filter-group select:focus {
+  outline: none;
+  border-color: #10b981;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+/* Schedule Table */
+.schedule-table-wrapper {
+  flex: 1;
+  overflow: auto;
+  /* scroll both x and y */
+  padding: 12px;
+  max-width: 100vw;
+  max-height: 70vh;
+  border: 1px solid #e5e7eb;
+}
+
+.schedule-table {
+  width: 100%;
+  min-width: 600px;
+  /* ensure table doesn't shrink too much */
+  border-collapse: collapse;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.schedule-table thead {
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+
+.schedule-table th {
+  padding: 8px 6px;
+  /* reduced padding */
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.time-column {
+  width: 120px;
+  text-align: left !important;
+  background: #f9fafb;
+  position: sticky;
+  left: 0;
+  z-index: 6;
+}
+
+.date-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.day-name {
+  font-size: 12px;
+  color: white;
+}
+
+.schedule-table td {
+  padding: 6px 4px;
+  /* reduced padding */
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.time-cell {
+  font-weight: 500;
+  color: #6b7280;
+  font-size: 12px;
+  background: #f9fafb;
+  position: sticky;
+  left: 0;
+  z-index: 4;
+}
+
+.slot-cell {
+  min-width: 160px;
+  vertical-align: top;
+}
+
+/* Slot Cards */
+.slot-card {
+  padding: 8px;
+  /* reduced padding */
+  border-radius: 6px;
+  font-size: 12px;
+  min-height: 60px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.slot-card.no-slot {
+  background: #f9fafb;
+  color: #9ca3af;
+  text-align: center;
+  cursor: default;
+  border: 1px dashed #d1d5db;
+}
+
+.slot-card.available {
+  background: #ecfdf5;
+  color: #059669;
+  text-align: center;
+  font-weight: 500;
+  border: 1px solid #a7f3d0;
+}
+
+.slot-card.available:hover {
+  background: #d1fae5;
+}
+
+.slot-card.booked {
+  background: white;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.slot-card.booked:hover {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.slot-client-name {
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 4px;
+  /* reduced margin */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.slot-time,
+.slot-action {
+  font-size: 11px;
+  /* smaller font */
+  color: #6b7280;
+  margin-bottom: 4px;
+  /* reduced margin */
+}
+
+.slot-status {
+  display: inline-block;
+  padding: 3px 6px;
+  /* reduced padding */
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+/* Status colors remain the same */
+.status-pending {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.status-assigned {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.status-approved {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.status-completed {
+  background: #e0e7ff;
+  color: #3730a3;
+}
+
+.status-cancelled {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.status-delayed {
+  background: #fde68a;
+  color: #78350f;
+}
+
+/* Loading & No Data */
+.loading,
+.no-data {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+  color: #6b7280;
+  font-size: 16px;
+}
+
+/* Mobile Popup remains same */
+.mobile-popup-overlay {
+  display: none;
+}
+
+.mobile-popup {
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+/* Scrollbar Styling */
+.schedule-table-wrapper::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.schedule-table-wrapper::-webkit-scrollbar-track {
+  background: #f3f4f6;
+}
+
+.schedule-table-wrapper::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 4px;
+}
+
+.schedule-table-wrapper::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}

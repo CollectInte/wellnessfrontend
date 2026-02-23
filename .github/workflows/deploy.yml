@@ -1,0 +1,53 @@
+name: Deploy React Frontend to VPS
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout frontend repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build React app
+        run: CI=false npm run build
+
+      # 🔹 Upload build to HOME (safe)
+      - name: Upload build to VPS (temp)
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          source: "build"
+          target: "/home/ubuntu/frontend-build"
+          rm: true
+          overwrite: true
+
+      # 🔹 Move to /var/www using sudo
+      - name: Move build to web root
+        uses: appleboy/ssh-action@v0.1.7
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            sudo rm -rf /var/www/wellnessfrontend
+            sudo mkdir -p /var/www/wellnessfrontend
+            sudo mv /home/ubuntu/frontend-build/build /var/www/wellnessfrontend/
+            sudo chown -R www-data:www-data /var/www/wellnessfrontend
+            sudo chmod -R 755 /var/www/wellnessfrontend
+            sudo systemctl reload nginx
+            echo "✅ Frontend deployment completed successfully!"
